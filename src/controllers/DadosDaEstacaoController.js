@@ -4,8 +4,10 @@ const DadosDaEstacao = mongoose.model('DadosDaEstacao');
 
 module.exports = {
 	async index(req, res){
-		const dadosDaEstacao = await DadosDaEstacao.find();
-		return res.json(dadosDaEstacao);
+
+		//const dadosDaEstacao = await DadosDaEstacao.find();
+		//return res.json(dadosDaEstacao);
+		return res.json('TESTE')
 	},
 
 	async show(req, res){
