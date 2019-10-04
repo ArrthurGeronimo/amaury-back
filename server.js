@@ -9,7 +9,7 @@ app.use(express.json()); //Permite o envio de dados para a aplicação no format
 app.use(cors());
 
 app.get('/',(req, res) => {
-    res.send('API de teste')
+  res.send('Home da Aplicação')
 })
 
 //Iniciando o DB
