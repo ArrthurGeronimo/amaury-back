@@ -9,14 +9,12 @@ app.use(express.json()); //Permite o envio de dados para a aplicação no format
 app.use(cors());
 
 app.get('/',(req, res) => {
-    res.send('hello world')
+    res.send('API de teste')
 })
 
 //Iniciando o DB
 mongoose.connect(
-	//'mongodb://localhost:27017/social_me',
-	//'mongodb+srv://mangai:Jaqueira623@mundodata-nflb6.mongodb.net/test?retryWrites=true&w=majority',
-	'mongodb+srv://mangai:Jaqueira623@mundo-data-testes-dmhji.mongodb.net/test?retryWrites=true&w=majority',
+	'mongodb+srv://admin:admin@ciia-banco-de-teste-2ndoa.mongodb.net/admin?retryWrites=true&w=majority',
 	{ useNewUrlParser: true }
 );
 //Testando DB

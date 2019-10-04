@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const rodadasDeSalt = 10;
 
-const PersonSchema = new mongoose.Schema({
+const DadosDaEstacaoSchema = new mongoose.Schema({
     createdAt:{
 		type: Date,
 		default: Date.now
@@ -10,162 +8,47 @@ const PersonSchema = new mongoose.Schema({
     updateAt:{
 		type: Date,
 		default: Date.now
-	},
-    dados:{
-        nome: {
-            type: String
-        },
-        nomeSocial: {
-            type: String
-        },
-        sexo: {
-            type: String
-        },
-        estadoCivil: {
-            type: String
-        },
-        rg: {
-            type: String
-        },
-        cpf: {
-            type: String
-        },
-        cns: {
-            type: String
-        },
-        pis: {
-            type: String
-        },
-        escolaridade: {
-            type: String
-        },
-        profissao: {
-            type: String
-        },
-        telefoneFixo: {
-            type: String
-        },
-        celular: {
-            type: String
-        },
-        email: {
-            type: String
-        },
-        pais: {
-            type: String
-        },
-        estado: {
-            type: String
-        },
-        cidade: {
-            type: String
-        },
-        nascimento: {
-            data: {
-                type: String
-            },
-            nacionalidade: {
-                type: String,
-            },
-            pais: {
-                type: String
-            },
-            estado: {
-                type: String
-            },
-            cidade: {
-                type: String
-            },
-        },
-        falecimento: {
-            data: {
-                type: String
-            },
-            pais: {
-                type: String
-            },
-            estado: {
-                type: String
-            },
-            cidade: {
-                type: String
-            },
-            causa: {
-                type: String
-            }
-        }    
     },
-    beneficiaria: {
-        status:{
-            type: Boolean
-        }
+    estacao_id:{
+        type: Number
     },
-    doadora: {
-        status:{
-            type: Boolean
-        }
+    serial_sensor:{
+        type: String
     },
-    fornecedora: {
-        status:{
-            type: Boolean
-        }
+    horario:{
+        type: String
     },
-    situacao: {
-        // Gestante
-        // Cancer
+    precipitacao:{
+        type: Number
     },
-    relacionamento: {
-        // RELACIONAMENTOS
+    temperaturaAr:{
+        type: Number
     },
-    programas: {
-        // PROGRAMAS QUE PARTICIPA
-        // SITUAÇÃO NO PROGRAMA
+    umidadeAr:{
+        type: Number
     },
-    atividades: {
-        // Gatilho Atividade_has_Pessoas
+    pressaoAr:{
+        type: Number
     },
-    sistemas : {
-        socialMe: {
-            password: {
-                type: String
-            }
-        }
-        //NomeSistema:{
-            //idCadastro
-            //idUsuario
-        //}
+    temperaturaSolo:{
+        type: Number
     },
-    maisInformacoes: {
+    umidadeSolo:{
+        type: Number
+    },
+    vento:{
+        type: Number
+    },
+    nivelUv:{
+        type: Number
+    },
+    mediaUv:{
+        type: Number
+    },
+    status:{
         type: String
     }
 });
 
-PersonSchema.pre('save', function (next) {
-    if (this.isNew || this.isModified('sistemas.socialMe.password')) {
-        const person = this;
-        bcrypt.hash(this.sistemas.socialMe.password, rodadasDeSalt, function (err, senhaCriptografada) {
-            if (err) {
-                next(err);
-            } else {
-                person.sistemas.socialMe.password = senhaCriptografada;
-                next();
-            }
-        });
-    } else {
-        next();
-    }
-});
-
-//isCorrectPassword
-PersonSchema.methods.isCorrectPassword = function (senha, callback) {
-    bcrypt.compare(senha, this.sistemas.socialMe.password, function (err, same) {
-        if (err) {
-            callback(err);
-        } else {
-            callback(err, same);
-        }
-    });
-};
-
-const Person = mongoose.model('Person', PersonSchema);
-module.exports = Person;
+const DadosDaEstacao = mongoose.model('DadosDaEstacao', DadosDaEstacaoSchema);
+module.exports = DadosDaEstacao;
