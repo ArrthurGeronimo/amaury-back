@@ -51,4 +51,5 @@ const DadosDaEstacaoSchema = new mongoose.Schema({
 });
 
 const DadosDaEstacao = mongoose.model('DadosDaEstacao', DadosDaEstacaoSchema);
+
 module.exports = DadosDaEstacao;
