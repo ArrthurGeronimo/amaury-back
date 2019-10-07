@@ -15,6 +15,9 @@ const DadosDaEstacaoSchema = new mongoose.Schema({
     serial_sensor:{
         type: String
     },
+    data:{
+        type: Date
+    },
     horario:{
         type: String
     },

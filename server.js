@@ -14,8 +14,8 @@ app.get('/',(req, res) => {
 
 //Iniciando o DB
 mongoose.connect(
-	'mongodb+srv://admin:admin@ciia-banco-de-teste-2ndoa.mongodb.net/admin?retryWrites=true&w=majority',
-	{ useNewUrlParser: true }
+  'mongodb+srv://ciia:ciia123@ciia-banco-de-teste-2ndoa.mongodb.net/test?retryWrites=true&w=majority',
+  { useNewUrlParser: true }
 );
 //Testando DB
 let db = mongoose.connection;
